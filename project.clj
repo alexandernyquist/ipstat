@@ -4,7 +4,10 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.6.0"]
-					[clj-http "0.9.1"]]
+					[clj-http "0.9.1"]
+					[ring/ring-core "1.3.2"]
+					[ring/ring-jetty-adapter "1.3.2"]
+					[org.clojure/data.json "0.2.6"]]
   :main ^:skip-aot ipstat.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}})
