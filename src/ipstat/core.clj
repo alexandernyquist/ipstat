@@ -27,8 +27,9 @@
 ; Web API handlers
 
 (defn app
-  [{params :params}]
-  (def ipstat (iplookup (params "ip")))
+  [{params :params client-ip :remote-addr}]
+  (def ip (or (params "ip") client-ip))
+  (def ipstat (iplookup ip))
   {:status 200
    :headers {"Content-Type" "application/json"}
    :body (str ipstat)})
