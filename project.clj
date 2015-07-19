@@ -7,7 +7,7 @@
 					[clj-http "0.9.1"]
 					[ring/ring-core "1.3.2"]
 					[ring/ring-jetty-adapter "1.3.2"]
-					[org.clojure/data.json "0.2.6"]]
+					[cheshire "5.5.0"]]
   :main ^:skip-aot ipstat.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}})

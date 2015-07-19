@@ -1,9 +1,9 @@
 (ns ipstat.core
-  (:require [clj-http.client :as http])
+  (:require [clj-http.client :as http]
+            [cheshire.core :refer :all])
   (:gen-class)
-  (:use
-    ring.middleware.params
-    ring.adapter.jetty))
+  (:use ring.middleware.params
+        ring.adapter.jetty))
 
 ; Utils
 
@@ -24,15 +24,16 @@
             :city (mnth parts 2 2)
             :isp (mnth parts 3 2)))
 
-; Web API handlers
-
+; Web API
 (defn app
   [{params :params client-ip :remote-addr}]
   (def ip (or (params "ip") client-ip))
   (def ipstat (iplookup ip))
   {:status 200
    :headers {"Content-Type" "application/json"}
-   :body (str ipstat)})
+   :body (generate-string ipstat)})
+
+; Entry point
 
 (defn -main
   "Entry point, baby."
